@@ -1,0 +1,55 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+frontend/.env
+
+# Python / Virtual Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+backend/.venv/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.cache/
+.parcel-cache/
+.vite/
+
+# Simulation Working Files & Logs
+simulation_jobs/*
+!simulation_jobs/.gitkeep
+*.pending
+*.running
+*.mac
+*.log
+*.out
+
+# OS & Temp Files
+.DS_Store
+Thumbs.db
+.tempmediaStorage/

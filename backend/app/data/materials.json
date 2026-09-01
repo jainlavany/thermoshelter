@@ -1,0 +1,426 @@
+[
+  {
+    "name": "Common Clay Brick",
+    "category": "structural",
+    "thermal_conductivity": 0.84,
+    "density": 1800.0,
+    "specific_heat": 880.0,
+    "solar_absorptivity": 0.70,
+    "emissivity": 0.90,
+    "source": { "name": "ASHRAE Fundamentals 2021", "url": "https://www.ashrae.org" }
+  },
+  {
+    "name": "Dense Concrete",
+    "category": "structural",
+    "thermal_conductivity": 1.40,
+    "density": 2300.0,
+    "specific_heat": 1000.0,
+    "solar_absorptivity": 0.65,
+    "emissivity": 0.90,
+    "source": { "name": "ASHRAE Fundamentals 2021", "url": "https://www.ashrae.org" }
+  },
+  {
+    "name": "AAC Block (Autoclaved Aerated Concrete)",
+    "category": "structural",
+    "thermal_conductivity": 0.16,
+    "density": 650.0,
+    "specific_heat": 1000.0,
+    "solar_absorptivity": 0.40,
+    "emissivity": 0.90,
+    "source": { "name": "CPWD Building Specifications", "url": "https://cpwd.gov.in" }
+  },
+  {
+    "name": "Fly Ash Brick",
+    "category": "structural",
+    "thermal_conductivity": 0.55,
+    "density": 1500.0,
+    "specific_heat": 900.0,
+    "solar_absorptivity": 0.60,
+    "emissivity": 0.90,
+    "source": { "name": "Indian Standard IS 12894", "url": "https://bis.gov.in" }
+  },
+  {
+    "name": "Granite Stone Masonry",
+    "category": "structural",
+    "thermal_conductivity": 2.20,
+    "density": 2600.0,
+    "specific_heat": 820.0,
+    "solar_absorptivity": 0.80,
+    "emissivity": 0.90,
+    "source": { "name": "NIST Physical Constants", "url": "https://www.nist.gov" }
+  },
+  {
+    "name": "Sandstone Masonry",
+    "category": "structural",
+    "thermal_conductivity": 1.80,
+    "density": 2200.0,
+    "specific_heat": 920.0,
+    "solar_absorptivity": 0.60,
+    "emissivity": 0.88,
+    "source": { "name": "ISO 10456 Thermal Properties", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Basalt Stone Block",
+    "category": "structural",
+    "thermal_conductivity": 1.95,
+    "density": 2800.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.85,
+    "emissivity": 0.92,
+    "source": { "name": "Himalayan Stone Research", "url": "https://www.isro.gov.in" }
+  },
+  {
+    "name": "Rammed Earth Wall",
+    "category": "structural",
+    "thermal_conductivity": 1.10,
+    "density": 1900.0,
+    "specific_heat": 850.0,
+    "solar_absorptivity": 0.75,
+    "emissivity": 0.90,
+    "source": { "name": "Local Himalayan Vernacular Standards", "url": "https://www.himalayanconstruction.org" }
+  },
+  {
+    "name": "Mud Brick (Adobe)",
+    "category": "structural",
+    "thermal_conductivity": 0.72,
+    "density": 1600.0,
+    "specific_heat": 950.0,
+    "solar_absorptivity": 0.70,
+    "emissivity": 0.90,
+    "source": { "name": "UNESCO Earth Architecture Database", "url": "https://unesco.org" }
+  },
+  {
+    "name": "Compressed Stabilized Earth Block (CSEB)",
+    "category": "structural",
+    "thermal_conductivity": 0.95,
+    "density": 1850.0,
+    "specific_heat": 890.0,
+    "solar_absorptivity": 0.65,
+    "emissivity": 0.90,
+    "source": { "name": "Auroville Earth Institute", "url": "https://www.earth-auroville.com" }
+  },
+  {
+    "name": "Softwood Deodar Timber",
+    "category": "structural",
+    "thermal_conductivity": 0.13,
+    "density": 500.0,
+    "specific_heat": 1600.0,
+    "solar_absorptivity": 0.60,
+    "emissivity": 0.90,
+    "source": { "name": "Forest Research Institute Dehradun", "url": "http://fri.icfre.gov.in" }
+  },
+  {
+    "name": "Hardwood Teak Timber",
+    "category": "structural",
+    "thermal_conductivity": 0.16,
+    "density": 680.0,
+    "specific_heat": 1500.0,
+    "solar_absorptivity": 0.65,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Bamboo Composite Panel",
+    "category": "structural",
+    "thermal_conductivity": 0.15,
+    "density": 600.0,
+    "specific_heat": 1400.0,
+    "solar_absorptivity": 0.50,
+    "emissivity": 0.88,
+    "source": { "name": "National Bamboo Mission India", "url": "https://nbm.nic.in" }
+  },
+  {
+    "name": "Structural Galvanized Steel Sheet",
+    "category": "structural",
+    "thermal_conductivity": 50.0,
+    "density": 7850.0,
+    "specific_heat": 480.0,
+    "solar_absorptivity": 0.35,
+    "emissivity": 0.25,
+    "source": { "name": "Steel Authority of India (SAIL)", "url": "https://sail.co.in" }
+  },
+
+  {
+    "name": "Expanded Polystyrene (EPS)",
+    "category": "insulation",
+    "thermal_conductivity": 0.038,
+    "density": 20.0,
+    "specific_heat": 1200.0,
+    "solar_absorptivity": 0.20,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456 Thermal Insulation", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Extruded Polystyrene (XPS)",
+    "category": "insulation",
+    "thermal_conductivity": 0.032,
+    "density": 35.0,
+    "specific_heat": 1300.0,
+    "solar_absorptivity": 0.20,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456 Thermal Insulation", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Glass Wool Insulation",
+    "category": "insulation",
+    "thermal_conductivity": 0.040,
+    "density": 24.0,
+    "specific_heat": 960.0,
+    "solar_absorptivity": 0.30,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456 Thermal Insulation", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Rockwool / Stone Wool Board",
+    "category": "insulation",
+    "thermal_conductivity": 0.035,
+    "density": 100.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.40,
+    "emissivity": 0.90,
+    "source": { "name": "Rockwool Group Datasheet", "url": "https://www.rockwool.com" }
+  },
+  {
+    "name": "Rigid Polyurethane Foam (PUF)",
+    "category": "insulation",
+    "thermal_conductivity": 0.024,
+    "density": 40.0,
+    "specific_heat": 1400.0,
+    "solar_absorptivity": 0.30,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456 Thermal Insulation", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Polyisocyanurate Board (PIR)",
+    "category": "insulation",
+    "thermal_conductivity": 0.022,
+    "density": 32.0,
+    "specific_heat": 1450.0,
+    "solar_absorptivity": 0.25,
+    "emissivity": 0.90,
+    "source": { "name": "PIR Insulation Handbook", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Silica Aerogel Blanket",
+    "category": "insulation",
+    "thermal_conductivity": 0.015,
+    "density": 150.0,
+    "specific_heat": 1000.0,
+    "solar_absorptivity": 0.15,
+    "emissivity": 0.85,
+    "source": { "name": "NASA Aerogel Technology Database", "url": "https://www.nasa.gov" }
+  },
+  {
+    "name": "Vacuum Insulation Panel (VIP)",
+    "category": "insulation",
+    "thermal_conductivity": 0.007,
+    "density": 190.0,
+    "specific_heat": 800.0,
+    "solar_absorptivity": 0.10,
+    "emissivity": 0.80,
+    "source": { "name": "IEA Annex 39 High Performance Thermal Insulation", "url": "https://www.iea.org" }
+  },
+  {
+    "name": "Recycled Cellulose Fiber",
+    "category": "insulation",
+    "thermal_conductivity": 0.039,
+    "density": 45.0,
+    "specific_heat": 1800.0,
+    "solar_absorptivity": 0.50,
+    "emissivity": 0.90,
+    "source": { "name": "CPWD Eco-Building Materials", "url": "https://cpwd.gov.in" }
+  },
+  {
+    "name": "Wood Fiber Insulation Board",
+    "category": "insulation",
+    "thermal_conductivity": 0.042,
+    "density": 160.0,
+    "specific_heat": 2100.0,
+    "solar_absorptivity": 0.55,
+    "emissivity": 0.90,
+    "source": { "name": "Gutex Eco Insulation Standards", "url": "https://www.gutex.de" }
+  },
+  {
+    "name": "Hemp Fiber Insulation",
+    "category": "insulation",
+    "thermal_conductivity": 0.040,
+    "density": 35.0,
+    "specific_heat": 1700.0,
+    "solar_absorptivity": 0.45,
+    "emissivity": 0.90,
+    "source": { "name": "European Natural Fiber Standards", "url": "https://www.eiha.org" }
+  },
+  {
+    "name": "Expanded Perlite Board",
+    "category": "insulation",
+    "thermal_conductivity": 0.052,
+    "density": 120.0,
+    "specific_heat": 1090.0,
+    "solar_absorptivity": 0.30,
+    "emissivity": 0.90,
+    "source": { "name": "Perlite Institute Technical Data", "url": "https://www.perlite.org" }
+  },
+  {
+    "name": "Exfoliated Vermiculite Board",
+    "category": "insulation",
+    "thermal_conductivity": 0.068,
+    "density": 140.0,
+    "specific_heat": 1100.0,
+    "solar_absorptivity": 0.40,
+    "emissivity": 0.90,
+    "source": { "name": "Vermiculite Association", "url": "https://www.vermiculite.org" }
+  },
+
+  {
+    "name": "Bio-Based Organic PCM (Melting 21°C)",
+    "category": "thermal_mass",
+    "thermal_conductivity": 0.20,
+    "density": 820.0,
+    "specific_heat": 2200.0,
+    "solar_absorptivity": 0.30,
+    "emissivity": 0.90,
+    "source": { "name": "Phase Change Material Products (PCM India)", "url": "https://www.pcmproducts.net" }
+  },
+  {
+    "name": "Inorganic Salt Hydrate PCM (Melting 23°C)",
+    "category": "thermal_mass",
+    "thermal_conductivity": 0.54,
+    "density": 1500.0,
+    "specific_heat": 1900.0,
+    "solar_absorptivity": 0.35,
+    "emissivity": 0.90,
+    "source": { "name": "Rubitherm Latent Heat Storage", "url": "https://www.rubitherm.eu" }
+  },
+  {
+    "name": "Water Storage Thermal Wall Panel",
+    "category": "thermal_mass",
+    "thermal_conductivity": 0.60,
+    "density": 1000.0,
+    "specific_heat": 4184.0,
+    "solar_absorptivity": 0.90,
+    "emissivity": 0.95,
+    "source": { "name": "Passive Solar Architecture Handbook", "url": "https://www.nrel.gov" }
+  },
+  {
+    "name": "Heavyweight Concrete Thermal Mass",
+    "category": "thermal_mass",
+    "thermal_conductivity": 1.75,
+    "density": 2400.0,
+    "specific_heat": 1050.0,
+    "solar_absorptivity": 0.75,
+    "emissivity": 0.92,
+    "source": { "name": "ASHRAE Fundamentals 2021", "url": "https://www.ashrae.org" }
+  },
+  {
+    "name": "Dark Slate Trombe Wall Tile",
+    "category": "thermal_mass",
+    "thermal_conductivity": 2.10,
+    "density": 2700.0,
+    "specific_heat": 800.0,
+    "solar_absorptivity": 0.92,
+    "emissivity": 0.94,
+    "source": { "name": "ISRO High-Altitude Solar Materials", "url": "https://www.isro.gov.in" }
+  },
+
+  {
+    "name": "Single Clear Float Glass 6mm",
+    "category": "glazing",
+    "thermal_conductivity": 1.05,
+    "density": 2500.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.15,
+    "emissivity": 0.84,
+    "source": { "name": "NFRC Window Database", "url": "https://www.nfrc.org" }
+  },
+  {
+    "name": "Double Glazed Low-E Argon Window",
+    "category": "glazing",
+    "thermal_conductivity": 0.35,
+    "density": 2500.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.10,
+    "emissivity": 0.10,
+    "source": { "name": "NFRC Window Database", "url": "https://www.nfrc.org" }
+  },
+  {
+    "name": "Triple Glazed Vacuum Insulated Glass (VIG)",
+    "category": "glazing",
+    "thermal_conductivity": 0.12,
+    "density": 2500.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.08,
+    "emissivity": 0.05,
+    "source": { "name": "Pilkington VIG Technical Specification", "url": "https://www.pilkington.com" }
+  },
+  {
+    "name": "Polycarbonate Multiwall Sheet 16mm",
+    "category": "glazing",
+    "thermal_conductivity": 0.19,
+    "density": 1200.0,
+    "specific_heat": 1200.0,
+    "solar_absorptivity": 0.12,
+    "emissivity": 0.90,
+    "source": { "name": "Sabic Lexan Polycarbonate Database", "url": "https://www.sabic.com" }
+  },
+  {
+    "name": "ETFE Fluoropolymer Membrane (Double Layer)",
+    "category": "glazing",
+    "thermal_conductivity": 0.24,
+    "density": 1750.0,
+    "specific_heat": 1170.0,
+    "solar_absorptivity": 0.05,
+    "emissivity": 0.85,
+    "source": { "name": "Vector Foiltec ETFE Technical Manual", "url": "https://www.vector-foiltec.com" }
+  },
+
+  {
+    "name": "Lime Plaster",
+    "category": "finish",
+    "thermal_conductivity": 0.70,
+    "density": 1600.0,
+    "specific_heat": 880.0,
+    "solar_absorptivity": 0.30,
+    "emissivity": 0.90,
+    "source": { "name": "Historic Building Conservation Manual", "url": "https://historicengland.org.uk" }
+  },
+  {
+    "name": "Mud-Straw Traditional Himalayan Render",
+    "category": "finish",
+    "thermal_conductivity": 0.45,
+    "density": 1300.0,
+    "specific_heat": 1100.0,
+    "solar_absorptivity": 0.65,
+    "emissivity": 0.90,
+    "source": { "name": "Himalayan Green Building Council", "url": "https://himalayangbc.org" }
+  },
+  {
+    "name": "Gypsum Plasterboard",
+    "category": "finish",
+    "thermal_conductivity": 0.21,
+    "density": 800.0,
+    "specific_heat": 1090.0,
+    "solar_absorptivity": 0.35,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456", "url": "https://www.iso.org" }
+  },
+  {
+    "name": "Cement Sand Mortar Plaster",
+    "category": "finish",
+    "thermal_conductivity": 1.20,
+    "density": 1860.0,
+    "specific_heat": 840.0,
+    "solar_absorptivity": 0.60,
+    "emissivity": 0.90,
+    "source": { "name": "CPWD Specifications", "url": "https://cpwd.gov.in" }
+  },
+  {
+    "name": "Natural Terracotta Clay Roof Tile",
+    "category": "finish",
+    "thermal_conductivity": 0.85,
+    "density": 1900.0,
+    "specific_heat": 800.0,
+    "solar_absorptivity": 0.75,
+    "emissivity": 0.90,
+    "source": { "name": "ISO 10456", "url": "https://www.iso.org" }
+  }
+]

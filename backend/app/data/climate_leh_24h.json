@@ -1,0 +1,37 @@
+{
+  "source": "demo_fixture",
+  "data_type": "simulation_fixture",
+  "is_real_time": false,
+  "is_synthetic": true,
+  "location": {
+    "name": "Leh, Ladakh",
+    "latitude": 34.1526,
+    "longitude": 77.5771
+  },
+  "records": [
+    { "timestamp": "00:00", "ambient_temp_C": -10.5, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.1, "relative_humidity_pct": 38.0 },
+    { "timestamp": "01:00", "ambient_temp_C": -11.2, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.0, "relative_humidity_pct": 39.0 },
+    { "timestamp": "02:00", "ambient_temp_C": -11.8, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 1.8, "relative_humidity_pct": 40.0 },
+    { "timestamp": "03:00", "ambient_temp_C": -12.1, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 1.9, "relative_humidity_pct": 41.0 },
+    { "timestamp": "04:00", "ambient_temp_C": -12.5, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.2, "relative_humidity_pct": 42.0 },
+    { "timestamp": "05:00", "ambient_temp_C": -12.8, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.3, "relative_humidity_pct": 43.0 },
+    { "timestamp": "06:00", "ambient_temp_C": -12.2, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.4, "relative_humidity_pct": 41.0 },
+    { "timestamp": "07:00", "ambient_temp_C": -11.0, "solar_irradiance_W_m2": 15.0, "wind_speed_m_s": 2.5, "relative_humidity_pct": 39.0 },
+    { "timestamp": "08:00", "ambient_temp_C": -8.5, "solar_irradiance_W_m2": 180.0, "wind_speed_m_s": 2.8, "relative_humidity_pct": 35.0 },
+    { "timestamp": "09:00", "ambient_temp_C": -5.2, "solar_irradiance_W_m2": 420.0, "wind_speed_m_s": 3.1, "relative_humidity_pct": 31.0 },
+    { "timestamp": "10:00", "ambient_temp_C": -2.1, "solar_irradiance_W_m2": 630.0, "wind_speed_m_s": 3.3, "relative_humidity_pct": 28.0 },
+    { "timestamp": "11:00", "ambient_temp_C": 1.4, "solar_irradiance_W_m2": 790.0, "wind_speed_m_s": 3.6, "relative_humidity_pct": 26.0 },
+    { "timestamp": "12:00", "ambient_temp_C": 3.2, "solar_irradiance_W_m2": 850.0, "wind_speed_m_s": 3.8, "relative_humidity_pct": 25.0 },
+    { "timestamp": "13:00", "ambient_temp_C": 4.1, "solar_irradiance_W_m2": 820.0, "wind_speed_m_s": 3.9, "relative_humidity_pct": 25.0 },
+    { "timestamp": "14:00", "ambient_temp_C": 3.8, "solar_irradiance_W_m2": 710.0, "wind_speed_m_s": 4.1, "relative_humidity_pct": 26.0 },
+    { "timestamp": "15:00", "ambient_temp_C": 2.2, "solar_irradiance_W_m2": 520.0, "wind_speed_m_s": 4.2, "relative_humidity_pct": 28.0 },
+    { "timestamp": "16:00", "ambient_temp_C": -0.8, "solar_irradiance_W_m2": 280.0, "wind_speed_m_s": 3.8, "relative_humidity_pct": 31.0 },
+    { "timestamp": "17:00", "ambient_temp_C": -3.5, "solar_irradiance_W_m2": 45.0, "wind_speed_m_s": 3.5, "relative_humidity_pct": 34.0 },
+    { "timestamp": "18:00", "ambient_temp_C": -5.8, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 3.2, "relative_humidity_pct": 36.0 },
+    { "timestamp": "19:00", "ambient_temp_C": -7.2, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.8, "relative_humidity_pct": 37.0 },
+    { "timestamp": "20:00", "ambient_temp_C": -8.1, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.6, "relative_humidity_pct": 38.0 },
+    { "timestamp": "21:00", "ambient_temp_C": -8.9, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.4, "relative_humidity_pct": 38.0 },
+    { "timestamp": "22:00", "ambient_temp_C": -9.4, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.3, "relative_humidity_pct": 39.0 },
+    { "timestamp": "23:00", "ambient_temp_C": -9.9, "solar_irradiance_W_m2": 0.0, "wind_speed_m_s": 2.2, "relative_humidity_pct": 39.0 }
+  ]
+}

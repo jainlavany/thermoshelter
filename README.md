@@ -67,8 +67,8 @@ By integrating a real-time **2-Node Resistance-Capacitance ($RC$) Lumped ODE Phy
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/ThermoShelter.git
-cd ThermoShelter
+git clone https://github.com/jainlavany/thermoshelter.git
+cd thermoshelter
 ```
 
 ### 2. Backend Setup

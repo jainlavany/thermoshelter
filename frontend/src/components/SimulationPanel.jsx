@@ -114,7 +114,9 @@ const SAMPLE_OUTDOOR = [-8.5, -9.2, -10.1, -10.5, -11.0, -10.8, -9.5, -6.2, -2.1
 const SAMPLE_TIMESTAMPS = Array.from({length: 24}, (_, i) => `${String(i).padStart(2, '0')}:00`)
 const SAMPLE_BREAKDOWN = { walls: 14.2, roof: 8.5, floor: 5.1, windows: 9.8, ventilation: 7.4 }
 
-export default function SimulationPanel({ geometry, materials, results, runQuickSim, runAnsysSim, checkAnsysStatus }) {
+export default function SimulationPanel({ geometry, materials, results, runQuickSim, runAnsysSim, checkAnsysStatus, onAnsysRun, onAnsysStatus }) {
+  const triggerAnsys = runAnsysSim || onAnsysRun
+  const checkStatus = checkAnsysStatus || onAnsysStatus
   const [ansysJob, setAnsysJob] = useState(null)
   const [ansysResults, setAnsysResults] = useState(null)
   const [ansysStatus, setAnsysStatus] = useState(null)
@@ -125,27 +127,36 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
     try {
       setErrorMessage('')
       setAnsysResults(null)
-      const data = await runAnsysSim(geometry)
-      setAnsysJob(data.job_id)
-      setAnsysStatus('QUEUED')
-      setPolling(true)
+      if (!triggerAnsys) {
+        setErrorMessage('ANSYS runner service unavailable.')
+        return
+      }
+      const resData = await triggerAnsys(geometry)
+      const jobId = typeof resData === 'string' ? resData : resData?.job_id
+      if (jobId) {
+        setAnsysJob(jobId)
+        setAnsysStatus('QUEUED')
+        setPolling(true)
+      } else {
+        setErrorMessage('Failed to enqueue 3D FEA job.')
+      }
     } catch (e) {
       setErrorMessage(e.message || 'ANSYS trigger failed.')
     }
   }
 
   useEffect(() => {
-    if (!polling || !ansysJob) return
+    if (!polling || !ansysJob || !checkStatus) return
     const interval = setInterval(async () => {
       try {
-        const info = await checkAnsysStatus(ansysJob)
+        const info = await checkStatus(ansysJob)
         setAnsysStatus(info.status)
         if (info.status === 'COMPLETED') {
           setAnsysResults(info.results)
           setPolling(false)
           clearInterval(interval)
         } else if (info.status === 'FAILED') {
-          setErrorMessage(info.error || 'ANSYS calculation crashed.')
+          setErrorMessage(info.error || 'ANSYS solver encountered an issue.')
           setPolling(false)
           clearInterval(interval)
         }
@@ -156,7 +167,7 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
       }
     }, 2000)
     return () => clearInterval(interval)
-  }, [polling, ansysJob])
+  }, [polling, ansysJob, checkStatus])
 
   const activeResults = ansysResults || results
   const solarGainVal = activeResults?.solar_gain_total_kwh ?? results?.solar_gain_total_kwh ?? 1.6

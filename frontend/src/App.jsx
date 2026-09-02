@@ -69,10 +69,23 @@ export default function App() {
     if (weather) {
       const timer = setTimeout(() => {
         runQuickSimulation(geometry, weather)
-      }, 150)
+      }, 100)
       return () => clearTimeout(timer)
     }
-  }, [geometry])
+  }, [
+    geometry.length,
+    geometry.width,
+    geometry.height,
+    geometry.floors,
+    geometry.orientation,
+    geometry.window_ratio,
+    geometry.ach,
+    JSON.stringify(geometry.wall_layers),
+    JSON.stringify(geometry.roof_layers),
+    JSON.stringify(geometry.floor_layers),
+    selectedLocationKey,
+    weather
+  ])
 
   const runQuickSimulation = async (geom, wData) => {
     if (!wData) return

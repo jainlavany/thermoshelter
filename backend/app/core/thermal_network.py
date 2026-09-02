@@ -199,7 +199,7 @@ class ThermalNetworkSolver:
             step_hours = dt / 3600.0
             
             loss_walls = max(0.0, (t_in[t] - t_env[t]) / r_in * self.area_walls_opaque) * step_hours / 1000.0
-            loss_roof = max(0.0, (t_in[t] - t_env[t]) / (0.13 + r_roof_cond * 0.5) * self.area_roof) * step_hours / 1000.0
+            loss_roof = max(0.0, (t_in[t] - t_env[t]) / (0.13 + self.r_roof_cond * 0.5) * self.area_roof) * step_hours / 1000.0
             loss_floor = max(0.0, q_floor_cond) * step_hours / 1000.0
             loss_win = max(0.0, q_win_cond) * step_hours / 1000.0
             loss_vent = max(0.0, q_vent) * step_hours / 1000.0

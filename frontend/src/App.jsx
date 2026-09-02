@@ -42,6 +42,7 @@ export default function App() {
 
   const [simulationResults, setSimulationResults] = useState(null)
   const [isSimulating, setIsSimulating] = useState(false)
+  const weatherRef = React.useRef(null)
 
   useEffect(() => {
     fetch(`${API_BASE}/materials`)
@@ -59,35 +60,22 @@ export default function App() {
     fetch(`${API_BASE}/climate/${selectedLocationKey}`)
       .then(res => res.json())
       .then(data => {
+        weatherRef.current = data
         setWeather(data)
-        runQuickSimulation(geometry, data)
+        runSimNow(geometry, data, selectedLocationKey)
       })
       .catch(err => console.error(err))
   }, [selectedLocationKey])
 
   useEffect(() => {
-    if (weather) {
-      const timer = setTimeout(() => {
-        runQuickSimulation(geometry, weather)
-      }, 100)
-      return () => clearTimeout(timer)
-    }
-  }, [
-    geometry.length,
-    geometry.width,
-    geometry.height,
-    geometry.floors,
-    geometry.orientation,
-    geometry.window_ratio,
-    geometry.ach,
-    JSON.stringify(geometry.wall_layers),
-    JSON.stringify(geometry.roof_layers),
-    JSON.stringify(geometry.floor_layers),
-    selectedLocationKey,
-    weather
-  ])
+    if (!weatherRef.current) return
+    const timer = setTimeout(() => {
+      runSimNow(geometry, weatherRef.current, selectedLocationKey)
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [geometry])
 
-  const runQuickSimulation = async (geom, wData) => {
+  const runSimNow = async (geom, wData, locKey) => {
     if (!wData) return
     setIsSimulating(true)
     try {
@@ -96,7 +84,7 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           geometry: geom,
-          weather_key: selectedLocationKey,
+          weather_key: locKey,
           initial_temp: 18.0
         })
       })
@@ -114,8 +102,10 @@ export default function App() {
     }
   }
 
+  const runQuickSimulation = (geom, wData) => runSimNow(geom, wData, selectedLocationKey)
+
   const handleSimulate = () => {
-    runQuickSimulation(geometry, weather)
+    runSimNow(geometry, weatherRef.current, selectedLocationKey)
   }
 
   const handleAnsysRun = async () => {
@@ -129,11 +119,14 @@ export default function App() {
           initial_temp: 18.0
         })
       })
-      const data = await res.json()
-      return data.job_id
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.detail || `Server error ${res.status}`)
+      }
+      return await res.json()
     } catch (e) {
       console.error(e)
-      return null
+      throw e
     }
   }
 
@@ -230,9 +223,10 @@ export default function App() {
             <div className="lg:col-span-3">
               <SimulationPanel
                 results={simulationResults}
-                onAnsysRun={handleAnsysRun}
-                onAnsysStatus={handleAnsysStatus}
+                runAnsysSim={handleAnsysRun}
+                checkAnsysStatus={handleAnsysStatus}
                 geometry={geometry}
+                materials={materials}
               />
             </div>
           </div>

@@ -114,9 +114,7 @@ const SAMPLE_OUTDOOR = [-8.5, -9.2, -10.1, -10.5, -11.0, -10.8, -9.5, -6.2, -2.1
 const SAMPLE_TIMESTAMPS = Array.from({length: 24}, (_, i) => `${String(i).padStart(2, '0')}:00`)
 const SAMPLE_BREAKDOWN = { walls: 14.2, roof: 8.5, floor: 5.1, windows: 9.8, ventilation: 7.4 }
 
-export default function SimulationPanel({ geometry, materials, results, runQuickSim, runAnsysSim, checkAnsysStatus, onAnsysRun, onAnsysStatus }) {
-  const triggerAnsys = runAnsysSim || onAnsysRun
-  const checkStatus = checkAnsysStatus || onAnsysStatus
+export default function SimulationPanel({ geometry, materials, results, runQuickSim, runAnsysSim, checkAnsysStatus }) {
   const [ansysJob, setAnsysJob] = useState(null)
   const [ansysResults, setAnsysResults] = useState(null)
   const [ansysStatus, setAnsysStatus] = useState(null)
@@ -127,36 +125,30 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
     try {
       setErrorMessage('')
       setAnsysResults(null)
-      if (!triggerAnsys) {
-        setErrorMessage('ANSYS runner service unavailable.')
-        return
-      }
-      const resData = await triggerAnsys(geometry)
-      const jobId = typeof resData === 'string' ? resData : resData?.job_id
-      if (jobId) {
-        setAnsysJob(jobId)
-        setAnsysStatus('QUEUED')
-        setPolling(true)
-      } else {
-        setErrorMessage('Failed to enqueue 3D FEA job.')
-      }
+      setAnsysStatus(null)
+      const data = await runAnsysSim(geometry)
+      const jobId = data?.job_id
+      if (!jobId) throw new Error('No job_id returned from server')
+      setAnsysJob(jobId)
+      setAnsysStatus('QUEUED')
+      setPolling(true)
     } catch (e) {
       setErrorMessage(e.message || 'ANSYS trigger failed.')
     }
   }
 
   useEffect(() => {
-    if (!polling || !ansysJob || !checkStatus) return
+    if (!polling || !ansysJob) return
     const interval = setInterval(async () => {
       try {
-        const info = await checkStatus(ansysJob)
+        const info = await checkAnsysStatus(ansysJob)
         setAnsysStatus(info.status)
         if (info.status === 'COMPLETED') {
           setAnsysResults(info.results)
           setPolling(false)
           clearInterval(interval)
         } else if (info.status === 'FAILED') {
-          setErrorMessage(info.error || 'ANSYS solver encountered an issue.')
+          setErrorMessage(info.error || 'ANSYS calculation crashed.')
           setPolling(false)
           clearInterval(interval)
         }
@@ -167,7 +159,7 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
       }
     }, 2000)
     return () => clearInterval(interval)
-  }, [polling, ansysJob, checkStatus])
+  }, [polling, ansysJob])
 
   const activeResults = ansysResults || results
   const solarGainVal = activeResults?.solar_gain_total_kwh ?? results?.solar_gain_total_kwh ?? 1.6
@@ -314,15 +306,33 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
             {polling ? 'Solving 3D FEA Mesh…' : 'Run 3D Thermal Solver'}
           </button>
 
+          {errorMessage && (
+            <div className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg p-2.5 font-medium">
+              ⚠ {errorMessage}
+            </div>
+          )}
+
           {ansysStatus && (
             <div className="flex flex-col gap-2 pt-2 border-t border-gray-200">
               <div className="flex justify-between text-xs font-semibold">
                 <span className="text-gray-500">Solver Status</span>
-                <span className="text-gray-900 font-black">{ansysStatus}</span>
+                <span className={`font-black ${
+                  ansysStatus === 'COMPLETED' ? 'text-emerald-600' :
+                  ansysStatus === 'FAILED' ? 'text-red-600' :
+                  'text-gray-900'
+                }`}>{ansysStatus}</span>
               </div>
               <div className="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
-                <div className="bg-black h-full transition-all duration-300 w-full" />
+                <div className={`h-full transition-all duration-300 ${
+                  ansysStatus === 'COMPLETED' ? 'bg-emerald-500 w-full' :
+                  ansysStatus === 'FAILED' ? 'bg-red-500 w-full' :
+                  ansysStatus === 'RUNNING' ? 'bg-black w-3/4' :
+                  'bg-gray-400 w-1/4'
+                }`} />
               </div>
+              {ansysStatus === 'COMPLETED' && (
+                <p className="text-[10px] text-emerald-600 font-bold">✓ 3D FEA validation complete — charts updated above</p>
+              )}
             </div>
           )}
         </div>

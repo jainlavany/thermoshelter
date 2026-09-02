@@ -234,63 +234,57 @@ export default function SimulationPanel({ geometry, materials, results, runQuick
       </div>
 
       <div className="flex flex-col gap-6">
-        {results && (
-          <div className="panel p-5 flex flex-col gap-4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
-              <SunMedium className="w-3.5 h-3.5 text-gray-700" /> Thermal Performance Summary
-            </h4>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard icon={SunMedium}     label="Solar Gain"    value={`${solarGainVal.toFixed(1)} kWh`} colorClass="bg-amber-50/70 border-amber-200/80 text-amber-700" />
-              <MetricCard icon={Flame}         label="Heat Loss"     value={`${heatLossVal.toFixed(1)} kWh`} colorClass="bg-rose-50/70 border-rose-200/80 text-rose-700" />
-              <MetricCard icon={CheckCircle}   label="Comfort Hours" value={`${comfortHours} hrs/day`} colorClass="bg-emerald-50/70 border-emerald-200/80 text-emerald-700" />
-              <MetricCard icon={Sun}           label="Solar Fraction" value={`${solarContrib}%`} colorClass="bg-sky-50/70 border-sky-200/80 text-sky-700" />
-            </div>
+        <div className="panel p-5 flex flex-col gap-4">
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
+            <SunMedium className="w-3.5 h-3.5 text-gray-700" /> Thermal Performance Summary
+          </h4>
+          <div className="grid grid-cols-2 gap-3">
+            <MetricCard icon={SunMedium}     label="Solar Gain"    value={`${solarGainVal.toFixed(1)} kWh`} colorClass="bg-amber-50/70 border-amber-200/80 text-amber-700" />
+            <MetricCard icon={Flame}         label="Heat Loss"     value={`${heatLossVal.toFixed(1)} kWh`} colorClass="bg-rose-50/70 border-rose-200/80 text-rose-700" />
+            <MetricCard icon={CheckCircle}   label="Comfort Hours" value={`${comfortHours} hrs/day`} colorClass="bg-emerald-50/70 border-emerald-200/80 text-emerald-700" />
+            <MetricCard icon={Sun}           label="Solar Fraction" value={`${solarContrib}%`} colorClass="bg-sky-50/70 border-sky-200/80 text-sky-700" />
           </div>
-        )}
+        </div>
 
         {/* ASHRAE 55 Thermal Comfort Card */}
-        {results && (
-          <div className="panel p-5 flex flex-col gap-3">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
-              <Heart className="w-3.5 h-3.5 text-rose-500" /> ASHRAE 55 Comfort Index
-            </h4>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="p-3.5 rounded-xl border border-rose-100 bg-rose-50/40">
-                <span className="text-[10px] font-semibold text-rose-700 uppercase tracking-widest block">PMV Score</span>
-                <span className="text-base font-black text-gray-900">{comfort.pmv > 0 ? `+${comfort.pmv}` : comfort.pmv}</span>
-                <span className="text-[9px] text-emerald-600 font-bold block mt-0.5">Neutral Comfort</span>
-              </div>
-              <div className="p-3.5 rounded-xl border border-purple-100 bg-purple-50/40">
-                <span className="text-[10px] font-semibold text-purple-700 uppercase tracking-widest block">PPD Discomfort</span>
-                <span className="text-base font-black text-gray-900">{comfort.ppd}%</span>
-                <span className="text-[9px] text-gray-500 font-medium block mt-0.5">Occupant Satisfaction</span>
-              </div>
+        <div className="panel p-5 flex flex-col gap-3">
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
+            <Heart className="w-3.5 h-3.5 text-rose-500" /> ASHRAE 55 Comfort Index
+          </h4>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3.5 rounded-xl border border-rose-100 bg-rose-50/40">
+              <span className="text-[10px] font-semibold text-rose-700 uppercase tracking-widest block">PMV Score</span>
+              <span className="text-base font-black text-gray-900">{comfort.pmv > 0 ? `+${comfort.pmv}` : comfort.pmv}</span>
+              <span className="text-[9px] text-emerald-600 font-bold block mt-0.5">Neutral Comfort</span>
+            </div>
+            <div className="p-3.5 rounded-xl border border-purple-100 bg-purple-50/40">
+              <span className="text-[10px] font-semibold text-purple-700 uppercase tracking-widest block">PPD Discomfort</span>
+              <span className="text-base font-black text-gray-900">{comfort.ppd}%</span>
+              <span className="text-[9px] text-gray-500 font-medium block mt-0.5">Occupant Satisfaction</span>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Carbon Offset Card */}
-        {results && (
-          <div className="panel p-5 flex flex-col gap-3">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
-              <Leaf className="w-3.5 h-3.5 text-emerald-600" /> Sustainability & Offset
-            </h4>
-            <div className="flex flex-col gap-2 text-xs">
-              <div className="flex justify-between items-center p-2 rounded-lg bg-amber-50/40 border border-amber-100/60">
-                <span className="text-gray-600 font-medium">Fuel Saved / Year</span>
-                <span className="font-extrabold text-gray-900">{offset.annual_fuel_saved_L} L</span>
-              </div>
-              <div className="flex justify-between items-center p-2 rounded-lg bg-emerald-50/40 border border-emerald-100/60">
-                <span className="text-gray-600 font-medium">CO₂ Reduction</span>
-                <span className="font-extrabold text-emerald-700">{offset.annual_co2_saved_kg} kg</span>
-              </div>
-              <div className="flex justify-between items-center p-2 rounded-lg bg-blue-50/40 border border-blue-100/60">
-                <span className="text-gray-600 font-medium">Annual Savings</span>
-                <span className="font-extrabold text-gray-900">₹{offset.annual_financial_saved_inr.toLocaleString('en-IN')}</span>
-              </div>
+        <div className="panel p-5 flex flex-col gap-3">
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 flex items-center gap-1.5">
+            <Leaf className="w-3.5 h-3.5 text-emerald-600" /> Sustainability & Offset
+          </h4>
+          <div className="flex flex-col gap-2 text-xs">
+            <div className="flex justify-between items-center p-2 rounded-lg bg-amber-50/40 border border-amber-100/60">
+              <span className="text-gray-600 font-medium">Fuel Saved / Year</span>
+              <span className="font-extrabold text-gray-900">{offset.annual_fuel_saved_L} L</span>
+            </div>
+            <div className="flex justify-between items-center p-2 rounded-lg bg-emerald-50/40 border border-emerald-100/60">
+              <span className="text-gray-600 font-medium">CO₂ Reduction</span>
+              <span className="font-extrabold text-emerald-700">{offset.annual_co2_saved_kg} kg</span>
+            </div>
+            <div className="flex justify-between items-center p-2 rounded-lg bg-blue-50/40 border border-blue-100/60">
+              <span className="text-gray-600 font-medium">Annual Savings</span>
+              <span className="font-extrabold text-gray-900">₹{offset.annual_financial_saved_inr.toLocaleString('en-IN')}</span>
             </div>
           </div>
-        )}
+        </div>
 
         {/* ANSYS Validation */}
         <div className="panel p-5 flex flex-col gap-4">

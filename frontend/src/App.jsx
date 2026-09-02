@@ -65,6 +65,15 @@ export default function App() {
       .catch(err => console.error(err))
   }, [selectedLocationKey])
 
+  useEffect(() => {
+    if (weather) {
+      const timer = setTimeout(() => {
+        runQuickSimulation(geometry, weather)
+      }, 150)
+      return () => clearTimeout(timer)
+    }
+  }, [geometry])
+
   const runQuickSimulation = async (geom, wData) => {
     if (!wData) return
     setIsSimulating(true)
